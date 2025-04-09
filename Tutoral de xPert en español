@@ -1,0 +1,292 @@
+In[1]:= << xAct`xPert`
+<< xAct`xTensor`
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= Package xAct`xPerm`  version 1.2.3, {2015,8,23}
+
+Durante la evaluaci\363n de In[1]:= CopyRight (C) 2003-2020, Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[1]:= Connecting to external MinGW executable...
+
+Durante la evaluaci\363n de In[1]:= Connection established.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= Package xAct`xTensor`  version 1.2.0, {2021,10,17}
+
+Durante la evaluaci\363n de In[1]:= CopyRight (C) 2002-2021, Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= Package xAct`xPert`  version 1.0.6, {2018,2,28}
+
+Durante la evaluaci\363n de In[1]:= CopyRight (C) 2005-2020, David Brizuela, Jose M. Martin-Garcia and Guillermo A. Mena Marugan, under the General Public License.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= ** Variable $PrePrint assigned value ScreenDollarIndices
+
+Durante la evaluaci\363n de In[1]:= ** Variable $CovDFormat changed from Prefix to Postfix
+
+Durante la evaluaci\363n de In[1]:= ** Option AllowUpperDerivatives of ContractMetric changed from False to True
+
+Durante la evaluaci\363n de In[1]:= ** Option MetricOn of MakeRule changed from None to All
+
+Durante la evaluaci\363n de In[1]:= ** Option ContractMetrics of MakeRule changed from False to True
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= Package xAct`xTensor`  version 1.2.0, {2021,10,17}
+
+Durante la evaluaci\363n de In[1]:= CopyRight (C) 2002-2021, Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[1]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[1]:= ------------------------------------------------------------
+
+In[3]:= << xAct`xCoba`
+
+Durante la evaluaci\363n de In[3]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[3]:= Package xAct`xCoba`  version 0.8.6, {2021,2,28}
+
+Durante la evaluaci\363n de In[3]:= CopyRight (C) 2005-2021, David Yllanes and Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[3]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[3]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[3]:= ------------------------------------------------------------
+
+In[4]:= 
+(*Generamos la variedad y la metrica de Minkowski*)
+DefManifold[M, 4, IndexRange[a, f]];
+DefChart[ch, M, {0, 1, 2, 3}, {t[], x[], y[], z[]}, 
+  ChartColor -> Blue];
+DefConstantSymbol[mass, PrintAs -> "M"];
+(*Las funciones que hay que hallar*)
+DefScalarFunction[HM, PrintAs -> "\!\(\*SubscriptBox[\(h\), \(+\)]\)"];
+DefScalarFunction[Hm, PrintAs -> "\!\(\*SubscriptBox[\(h\), \(-\)]\)"];
+$Assumptions = 
+  mass > 0 && x[] \[Element] Reals && y[] \[Element] Reals && 
+   z[] \[Element] Reals && t[] \[Element] Reals; 
+(*\[Eta]=CTensor[{{-1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}},{-ch,-ch}];
+SetCMetric[\[Eta],ch,SignatureOfMetric->{1,3,0}];*)
+DefMetric[-1, \[Eta][-a, -b], cd];
+DefMetricPerturbation[\[Eta], H, \[Omega]];
+gmatrix = ComponentArray[\[Eta][{-a, -ch}, {-b, -ch}]] // MatrixForm;
+(*cd=CovDOfMetric[g];*)
+
+Durante la evaluaci\363n de In[4]:= ** DefManifold: Defining manifold M. 
+
+Durante la evaluaci\363n de In[4]:= ** DefVBundle: Defining vbundle TangentM. 
+
+Durante la evaluaci\363n de In[4]:= ** DefChart: Defining chart ch. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining coordinate scalar t[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining coordinate scalar x[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining coordinate scalar y[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining coordinate scalar z[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefMapping: Defining mapping ch. 
+
+Durante la evaluaci\363n de In[4]:= ** DefMapping: Defining inverse mapping ich. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining mapping differential tensor dich[-\[FormalA],icha]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining mapping differential tensor dch[-a,ch\[FormalA]]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefBasis: Defining basis ch. Coordinated basis.
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD: Defining parallel derivative PDch[-a]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining vanishing torsion tensor TorsionPDch[a,-b,-c]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric Christoffel tensor ChristoffelPDch[a,-b,-c]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining vanishing Riemann tensor RiemannPDch[-a,-b,-c,d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining vanishing Ricci tensor RicciPDch[-a,-b]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining antisymmetric +1 density etaUpch[a,b,c,d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining antisymmetric -1 density etaDownch[-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefConstantSymbol: Defining constant symbol mass. 
+
+Durante la evaluaci\363n de In[4]:= ** DefScalarFunction: Defining scalar function HM. 
+
+Durante la evaluaci\363n de In[4]:= ** DefScalarFunction: Defining scalar function Hm. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric metric tensor \[Eta][-a,-b]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining antisymmetric tensor epsilon\[Eta][-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining tetrametric Tetra\[Eta][-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining tetrametric Tetra\[Eta]\[Dagger][-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD: Defining covariant derivative cd[-a]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining vanishing torsion tensor Torsioncd[a,-b,-c]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric Christoffel tensor Christoffelcd[a,-b,-c]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining Riemann tensor Riemanncd[-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric Ricci tensor Riccicd[-a,-b]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD:  Contractions of Riemann automatically replaced by Ricci.
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining Ricci scalar RicciScalarcd[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD:  Contractions of Ricci automatically replaced by RicciScalar.
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric Einstein tensor Einsteincd[-a,-b]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining Weyl tensor Weylcd[-a,-b,-c,-d]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining symmetric TFRicci tensor TFRiccicd[-a,-b]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining Kretschmann scalar Kretschmanncd[]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD:  Computing RiemannToWeylRules for dim 4
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD:  Computing RicciToTFRicci for dim 4
+
+Durante la evaluaci\363n de In[4]:= ** DefCovD:  Computing RicciToEinsteinRules for dim 4
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining weight +2 density Det\[Eta][]. Determinant.
+
+Durante la evaluaci\363n de In[4]:= ** DefParameter: Defining parameter \[Omega]. 
+
+Durante la evaluaci\363n de In[4]:= ** DefTensor: Defining tensor H[LI[order],-a,-b]. 
+
+In[13]:= (*Definimos la perturbación para la metrica de Minkowski*)
+g = Perturbed[\[Eta][-a, -b], 1];
+
+In[14]:= (*La inversa*)
+
+In[15]:= ig = Perturbed[\[Eta][a, b], 1] // ExpandPerturbation;
+(*Comprobamos que es la inversa*)
+g ig // ContractMetric // ToCanonical
+
+Out[16]= 4 - \[Omega]^2  H[
+xAct`xTensor`LI[1], -a, -b]   H[
+xAct`xTensor`LI[1], a, b]
+
+In[17]:= (*PAra agrupar coeficientes*)
+
+In[18]:= Collect[%, \[Omega]];
+
+In[19]:= Perturbation[Christoffelcd[a, -b, -c], 1];
+ ExpandPerturbation[%]
+
+Out[20]= 1/2 (-(
+cd[a][
+H[
+xAct`xTensor`LI[1], -b, -c]]) + cd[-b][
+H[
+xAct`xTensor`LI[1], a, -c]] + cd[-c][
+H[
+xAct`xTensor`LI[1], a, -b]])
+
+In[21]:= Perturbation[Riccicd[-a, -b], 1];
+ExpandPerturbation[%] == 0 // Simplify
+
+
+Out[22]= cd[-a][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -c]]] + cd[-a][
+cd[-c][
+H[
+xAct`xTensor`LI[1], c, -b]]] + cd[-c][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -a]]] == cd[-a][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -c]]] + cd[-c][
+cd[-a][
+H[
+xAct`xTensor`LI[1], c, -b]]] + cd[-c][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -a]]]
+
+In[23]:= Ric = cd[-a][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -c]]] + cd[-c][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -a]]] - cd[-a][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -c]]] - cd[-c][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -a]]];
+
+In[42]:= Perturbation[RicciScalarcd[], 1];
+ExpandPerturbation[%] == 0  // Simplify
+
+Out[43]= 2  H[
+xAct`xTensor`LI[1], a, b]   Riccicd[-a, -b] + \[Eta][a, b]  (cd[-a][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -c]]] + cd[-a][
+cd[-c][
+H[
+xAct`xTensor`LI[1], c, -b]]] - cd[-a][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -c]]] - cd[-c][
+cd[-a][
+H[
+xAct`xTensor`LI[1], c, -b]]] - cd[-c][
+cd[-b][
+H[
+xAct`xTensor`LI[1], c, -a]]] + cd[-c][
+cd[c][
+H[
+xAct`xTensor`LI[1], -b, -a]]]) == 0
+
+In[25]:= 
+
+In[26]:= 
+
+In[27]:= 
+
+In[28]:= 
+
+In[29]:= 
+
+In[30]:= 
+
+In[31]:= 
+
+In[32]:= 
+
+In[33]:= 
+
+In[34]:= 
+
+In[35]:= 
+
+In[36]:= 
+
+In[37]:= 
+
+In[38]:= 
