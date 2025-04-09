@@ -1,0 +1,632 @@
+In[9]:= << xAct`xCoba`
+
+Durante la evaluaci\363n de In[9]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[9]:= Package xAct`xCoba`  version 0.8.6, {2021,2,28}
+
+Durante la evaluaci\363n de In[9]:= CopyRight (C) 2005-2021, David Yllanes and Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[9]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[9]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[9]:= ------------------------------------------------------------
+
+In[10]:= DefManifold[M, 4, IndexRange[a, q]];
+DefChart[ch, M, {0, 1, 2, 3}, {t[], r[], \[Theta][], \[Phi][]}, 
+  ChartColor -> Blue];
+
+Durante la evaluaci\363n de In[10]:= ValidateSymbol::used: Symbol M is already used as a manifold.
+
+Durante la evaluaci\363n de In[10]:= ValidateSymbol::used: Symbol ch is already used as a mapping.
+
+Durante la evaluaci\363n de In[10]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[11]= Hold[Throw[Null]]
+
+ 
+
+Durante la evaluaci\363n de In[12]:= ValidateSymbol::used: Symbol mass is already used as a constant-symbol.
+
+In[13]:= DefScalarFunction[scalar, PrintAs -> "\[Phi]"];
+DefTensor[v[a], M];
+
+
+Durante la evaluaci\363n de In[13]:= ** DefScalarFunction: Defining scalar function scalar. 
+
+Durante la evaluaci\363n de In[13]:= ** DefTensor: Defining tensor v[a]. 
+
+In[15]:= w = CTensor[{2, r[], Sqrt[scalar[r[]] t[]], 0}, {ch}];
+
+In[16]:= u = CTensor[{2, r[], Sqrt[scalar[r[]] t[]], 0}, {-ch}];
+
+
+In[17]:= (*Para hacer el producto escalar basta con multiplicar los \
+vectores con indices -a y a*)
+
+In[18]:= u[-a] w[a];
+
+(*Para expresarlo en la base y elegir la componente que queremos*)
+u[{-a, -ch}];
+w[{2, ch}];
+
+Durante la evaluaci\363n de In[18]:= CNumbersOf::invalid: 2 is not a valid cnumber of basis ch.
+
+Durante la evaluaci\363n de In[18]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[20]= Hold[Throw[Null]]
+
+In[21]:= (*Ponerlos en un array o una lista*)
+Table[w[{a, ch}], {a, 0, 3}];
+(*Importante si es contravairante o covariante*)
+u[-a] v[a] // ToBasisExpand // ContractBasis;
+
+DefTensor[W[a], M];
+
+2  w[a] + 4 W[a];
+
+(*matrices*)
+u[-a] u[-a];
+w[a] u[-b] // ToBasisExpand;
+
+u1 = 2 mass/r[] u;
+u1[-a]
+
+
+Durante la evaluaci\363n de In[21]:= CNumbersOf::invalid: 0 is not a valid cnumber of basis ch.
+
+Durante la evaluaci\363n de In[21]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[21]= Hold[Throw[Null]]
+
+Durante la evaluaci\363n de In[21]:= ** DefTensor: Defining tensor W[a]. 
+
+Out[28]= xAct`xCoba`CTensor[{4 (mass/r[]), 
+  2 mass, ((2 mass)/r[]) (scalar[
+r[]] t[])^Rational[1, 2], 0}, {-ch}, 0][-a]
+
+In[29]:= (*Para convertir tensores abstractos a tensores que se puede \
+añadir componentes*)
+
+In[30]:= v1 = (1 - 2 mass/r[]) ToCTensor[v, {ch}];
+v1[a];
+
+In[32]:= B = CTensor[{{(1 - 2 mass/r[]), 0, 0, 0},
+    {0, (1 - 2 mass/r[])^(-1), 0, 0}, {0, 0, r[]^2, 0}, {0, 0, 0, 
+     r[]^2 Sin[\[Theta][]]^2}}, {-ch, -ch}];
+
+In[33]:= B[-a, -b] w[a] // ToBasisExpand;
+
+1/scalar[r[]] B[-a, -b] w[a] w[b] // ToBasisExpand;
+
+In[35]:= 
+
+In[36]:= (*Para una metrica*)
+$Assumptions = 
+  mass > 0 && r[] > 2 mass && 0 < \[Theta][] < \[Pi] && 
+   0 < \[Phi][] < 2 \[Pi] && t[] \[Element] Reals; 
+g = B;
+
+g[-a, -b] // ToBasisExpand;
+
+In[39]:= (*Para ver la signatura y elegirla*)
+SetCMetric[g, ch, SignatureOfMetric -> {3, 1, 0}]
+
+In[40]:= 
+
+In[41]:= (*Para las derivadas covariantes y asi obtener los simbolos \
+de Christoffle*)
+
+cd = CovDOfMetric[g];
+
+In[42]:= (*El tensor Levi-Civita*)
+epsilon[g] // Normal // Simplify;
+
+In[43]:= 
+
+In[44]:= (*Para el det(g) hay que poner [] al final porque sino nos \
+sale un tensor *)
+
+In[45]:= Determinant[g, ch][];
+
+In[46]:= (*Al haber métrica, se puede poner los vectores ya con a o \
+-a ya que sube y baja los indices de forma automática*)
+u[a] // ToBasisExpand;
+
+u[a] w[-a];
+
+In[48]:= (*Es fácil hacer la inversa de la metrica o subir y bajar \
+indices*)
+B[a, b];
+(*Debe de dar 4 *)
+B[a, b] B[-a, -b];
+g[a, b] g[-b, -c] // Simplify;
+
+In[51]:= (*Para crear una lista con los tensores abstractos*)
+
+ComponentArray[u[{a, -ch}]];
+
+Durante la evaluaci\363n de In[51]:= CNumbersOf::invalid: 0 is not a valid cnumber of basis ch.
+
+Durante la evaluaci\363n de In[51]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[51]= Hold[Throw[Null]]
+
+(*En forma matricial*)
+ComponentArray[u[{a, -ch}]] // MatrixForm;
+ComponentArray[u[{a, ch}]] // MatrixForm;
+
+Durante la evaluaci\363n de In[52]:= CNumbersOf::invalid: 0 is not a valid cnumber of basis ch.
+
+Durante la evaluaci\363n de In[52]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[52]= Hold[Throw[Null]]
+
+Out[53]//MatrixForm= \!\(
+TagBox[
+RowBox[{"(", "", 
+TagBox[GridBox[{
+{
+RowBox[{"-", 
+FractionBox[
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}], 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False]}], "-", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}]]}]},
+{
+RowBox[{
+RowBox[{
+RowBox[{"-", "2"}], " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False]}], "+", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}]},
+{
+FractionBox[
+SqrtBox[
+RowBox[{
+RowBox[{
+InterpretationBox[
+StyleBox["\[Phi]",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`scalar,
+Editable->False], "[", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False], "]"}], " ", 
+InterpretationBox[
+StyleBox["t",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`t[],
+Editable->False]}]], 
+SuperscriptBox[
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False], "2"]]},
+{"0"}
+},
+GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+GridBoxSpacings->{"Columns" -> {
+Offset[0.27999999999999997`], {
+Offset[0.5599999999999999]}, 
+Offset[0.27999999999999997`]}, "Rows" -> {
+Offset[0.2], {
+Offset[0.4]}, 
+Offset[0.2]}}],
+Column], "", ")"}],
+Function[BoxForm`e$, 
+MatrixForm[BoxForm`e$]]]\)
+
+In[54]:= 
+S = CTensor[{{1, 2, 3, 4}, {0, 0, 2, 0}, {1, 1, 0, 0}, {0, 1, 0, 
+     1}}, {-ch, -ch}];
+
+In[55]:= (*Es muy importante colocar el signo correcto si es \
+contravariante o covariante*)
+A1 = ComponentArray[S[{-a, -ch}, {-b, -ch}]] // MatrixForm;
+(*Tambien se puede multiplicar y contraer indices dentro de \
+ComponentArray*)
+A2 = ComponentArray[
+   S[{-a, -ch}, {-b, -ch}] w[{a, ch}] // ContractBasis];
+A2 // MatrixForm;
+BB = Det[A1] // Simplify;
+
+In[59]:= 
+
+In[60]:= g[{1, -ch}, {1, -ch}];
+
+Table[g[{i, ch}, {i, ch}], {i, 0, 3}];
+
+Durante la evaluaci\363n de In[60]:= CNumbersOf::invalid: 1 is not a valid cnumber of basis -ch.
+
+Durante la evaluaci\363n de In[60]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[60]= Hold[Throw[Null]]
+
+Durante la evaluaci\363n de In[60]:= CNumbersOf::invalid: 0 is not a valid cnumber of basis ch.
+
+Durante la evaluaci\363n de In[60]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[61]= Hold[Throw[Null]]
+
+In[62]:= 
+y = CTensor[{0, 0, 0, 1}, {-ch}];
+
+(*Para hacer sustituciones de tensores abtractos  se usa MakeRule*)
+v[a] u[-a] /. MakeRule[{u[-a], y[-a] }];
+
+(*Si contraigo un tensor simetrico con uno antisimetrico es 0 *)
+epsilon[g][-a, -b, -c, -d] g[a, b];
+
+Out[64]= 0
+
+ 
+
+In[66]:= 
+
+(*Para las derivadas covariantes, se usa tambien el simbolo @ como \
+multiplicacion*)
+cd[-a][u[a]];
+
+
+In[200]:= cd[-a]@v[a];
+
+cd[-a]@g[-b, -c];
+
+cd[-a]@w[a];
+cd[-a]@cd[-b]@w[b] // Simplify;
+(*Simbolos de Christoffel*)
+
+Christoffel[cd, PDch][-a, -b, c];
+
+lis = ComponentArray[
+  Christoffel[cd, PDch][{a, ch}, {-b, -ch}, {-c, -ch}]] 
+
+
+Out[205]= {{{0, -(mass/(2 mass r[] - r[]^2)), 0, 
+   0}, {-(mass/(2 mass r[] - r[]^2)), 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 
+   0, 0}}, {{(mass (2 mass - r[]))/r[]^3, 0, 0, 0}, {0, mass/(
+   2 mass r[] - r[]^2), 0, 0}, {0, 0, 2 mass - r[], 0}, {0, 0, 
+   0, (2 mass - r[]) Sin[
+\[Theta][]]^2}}, {{0, 0, 0, 0}, {0, 0, 1/r[], 0}, {0, 1/r[], 0, 
+   0}, {0, 0, 0, -Cos[
+\[Theta][]] Sin[
+\[Theta][]]}}, {{0, 0, 0, 0}, {0, 0, 0, 1/r[]}, {0, 0, 0, Cot[
+\[Theta][]]}, {0, 1/r[], Cot[
+\[Theta][]], 0}}}
+
+Riemann[cd][-a, -b, -c, d];
+Ricci[cd][-a, -b];
+RicciScalar[cd][];
+Einstein[cd][-a, -b];
+Torsion[cd][ a, -b, c];
+Weyl[cd][-a, -b, -c, -d];
+Riemann[cd][-a, -b, -c, -d] == Weyl[cd][-a, -b, -c, -d];
+
+Kretschmann[cd][];
+
+ 
+
+
+
+In[247]:= (*Para hacer una lista donde solo aparezcan los valores \
+distintos de 0 de los tensores, hay que hacer una lista con condicion \
+If y luego usar Deletecases y Partition para dejarlo en columnas tal \
+que*)
+
+list = Table[
+   If[UnsameQ[lis[[\[Alpha], \[Beta], \[Gamma]]], 
+     0], {Subscript[
+      Superscript["\[CapitalGamma]", \[Alpha] - 1], \[Beta] - 
+       1, \[Gamma] - 1], 
+     lis[[\[Alpha], \[Beta], \[Gamma]]]}], {\[Alpha], 1, 
+    Length[lis]}, {\[Beta], 1, Length[lis]}, {\[Gamma], 1, \[Beta]}];
+Partition[DeleteCases[Flatten[list], Null ], 2] // TableForm
+
+Out[248]//TableForm= \!\(
+TagBox[GridBox[{
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "0"},
+"Superscript"], 
+RowBox[{"1", ",", "0"}]], 
+RowBox[{"-", 
+FractionBox[
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False], 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False], " ", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}], "-", 
+SuperscriptBox[
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False], "2"]}]]}]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "1"},
+"Superscript"], 
+RowBox[{"0", ",", "0"}]], 
+FractionBox[
+RowBox[{
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False], " ", 
+RowBox[{"(", 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False]}], "-", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}], ")"}]}], 
+SuperscriptBox[
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False], "3"]]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "1"},
+"Superscript"], 
+RowBox[{"1", ",", "1"}]], 
+FractionBox[
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False], 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False], " ", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}], "-", 
+SuperscriptBox[
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False], "2"]}]]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "1"},
+"Superscript"], 
+RowBox[{"2", ",", "2"}]], 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False]}], "-", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "1"},
+"Superscript"], 
+RowBox[{"3", ",", "3"}]], 
+RowBox[{
+RowBox[{"(", 
+RowBox[{
+RowBox[{"2", " ", 
+InterpretationBox[
+StyleBox["M",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`mass,
+Editable->False]}], "-", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]}], ")"}], " ", 
+SuperscriptBox[
+RowBox[{
+InterpretationBox[
+StyleBox["Sin",
+ShowAutoStyles->False,
+AutoSpacing->False],
+Sin,
+Editable->False], "[", 
+InterpretationBox[
+StyleBox["\[Theta]",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`\[Theta][],
+Editable->False], "]"}], "2"]}]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "2"},
+"Superscript"], 
+RowBox[{"2", ",", "1"}]], 
+FractionBox["1", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "2"},
+"Superscript"], 
+RowBox[{"3", ",", "3"}]], 
+RowBox[{
+RowBox[{"-", 
+RowBox[{
+InterpretationBox[
+StyleBox["Cos",
+ShowAutoStyles->False,
+AutoSpacing->False],
+Cos,
+Editable->False], "[", 
+InterpretationBox[
+StyleBox["\[Theta]",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`\[Theta][],
+Editable->False], "]"}]}], " ", 
+RowBox[{
+InterpretationBox[
+StyleBox["Sin",
+ShowAutoStyles->False,
+AutoSpacing->False],
+Sin,
+Editable->False], "[", 
+InterpretationBox[
+StyleBox["\[Theta]",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`\[Theta][],
+Editable->False], "]"}]}]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "3"},
+"Superscript"], 
+RowBox[{"3", ",", "1"}]], 
+FractionBox["1", 
+InterpretationBox[
+StyleBox["r",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`r[],
+Editable->False]]},
+{
+SubscriptBox[
+TemplateBox[{"\"\[CapitalGamma]\"", "3"},
+"Superscript"], 
+RowBox[{"3", ",", "2"}]], 
+RowBox[{
+InterpretationBox[
+StyleBox["Cot",
+ShowAutoStyles->False,
+AutoSpacing->False],
+Cot,
+Editable->False], "[", 
+InterpretationBox[
+StyleBox["\[Theta]",
+ShowAutoStyles->False,
+AutoSpacing->False],
+$CellContext`\[Theta][],
+Editable->False], "]"}]}
+},
+GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+GridBoxSpacings->{"Columns" -> {
+Offset[0.27999999999999997`], {
+Offset[2.0999999999999996`]}, 
+Offset[0.27999999999999997`]}, "Rows" -> {
+Offset[0.2], {
+Offset[0.4]}, 
+Offset[0.2]}}],
+Function[BoxForm`e$, 
+TableForm[BoxForm`e$]]]\)
+
+
+
+
+
+In[67]:= 
+
+In[68]:= 
+
+In[69]:= 
+
+In[70]:= 
+
+In[71]:= 
+
+In[72]:= 
+
+In[73]:= 
+
+In[74]:=  
+
+In[75]:= 
+
+In[76]:= 
+
+In[77]:= 
+
+In[78]:= 
+
+In[79]:= 
