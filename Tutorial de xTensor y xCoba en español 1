@@ -1,0 +1,4261 @@
+
+In[11]:= Needs["xAct`xTensor`"]
+
+Durante la evaluaci\363n de In[11]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[11]:= Package xAct`xPerm`  version 1.2.3, {2015,8,23}
+
+Durante la evaluaci\363n de In[11]:= CopyRight (C) 2003-2020, Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[11]:= Connecting to external MinGW executable...
+
+Durante la evaluaci\363n de In[11]:= Connection established.
+
+Durante la evaluaci\363n de In[11]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[11]:= Package xAct`xTensor`  version 1.2.0, {2021,10,17}
+
+Durante la evaluaci\363n de In[11]:= CopyRight (C) 2002-2021, Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[11]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[11]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[11]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[11]:= PrintAs::shdw: Symbol PrintAs appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= DefConstantSymbol::shdw: Symbol DefConstantSymbol appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= DefTensor::shdw: Symbol DefTensor appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= PD::shdw: Symbol PD appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= CovDToChristoffel::shdw: Symbol CovDToChristoffel appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= ScreenDollarIndices::shdw: Symbol ScreenDollarIndices appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Durante la evaluaci\363n de In[11]:= Simplification::shdw: Symbol Simplification appears in multiple contexts {xAct`xTensor`,Global`}; definitions in context xAct`xTensor` may shadow or be shadowed by other definitions.
+
+Introducción a los tensores.
+
+In[3]:= (*Para ver definiciones o ver como funciona algunas funciones de tensores se \
+utiliza la interrofación*)
+?xAct`xTensor`*
+
+
+
+Out[3]= 
+\!\(\*FrameBox[\!\(\*GridBox[{
+{
+DynamicModuleBox[{Typeset`open$$ = True}, 
+PaneSelectorBox[{False->
+ButtonBox[
+RowBox[{
+DynamicBox[FEPrivate`FrontEndResource["FEBitmaps", "RightPointerOpener"]], 
+         " ", 
+StyleBox["xAct`xTensor`", "InformationGridGroupHeader"]}],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonFunction:>FEPrivate`Set[Typeset`open$$, True],
+Evaluator->Automatic,
+Method->"Preemptive"], True->
+PaneBox[GridBox[{
+{
+ButtonBox[
+RowBox[{
+DynamicBox[FEPrivate`FrontEndResource["FEBitmaps", "DownPointerOpener"],
+ImageSizeCache->{10., {3., 7.}}], " ", 
+StyleBox["xAct`xTensor`", "InformationGridGroupHeader"]}],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonFunction:>FEPrivate`Set[Typeset`open$$, False],
+Evaluator->Automatic,
+Method->"Preemptive"]},
+{
+PaneBox[GridBox[{
+{
+ButtonBox[
+StyleBox["ABIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ABIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DisorderedPairQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DisorderedPairQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MasterOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MasterOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SymmetryTableauxOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SymmetryTableauxOfTensor", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AbstractIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AbstractIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Down", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Down", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Metric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Metric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Tangent", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Tangent", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AbstractIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AbstractIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DownIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DownIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricEndowedQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricEndowedQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TangentBundleOfManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"TangentBundleOfManifold", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Acceleration", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Acceleration", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DownIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DownIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricOfCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TangentBundleQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TangentBundleQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AChristoffel", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DownVectorQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DownVectorQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricOn", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricOn", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TangentTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TangentTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AddIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AddIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Dummy", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Dummy", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Tensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Tensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DummyAs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DummyAs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricScalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TensorAt", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TensorAt", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["DummyIn", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DummyIn", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricsOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MetricsOfVBundle",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TensorD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TensorD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AllowUpperDerivatives", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"AllowUpperDerivatives", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["EIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"EIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MetricToProjector", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"MetricToProjector", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TensorDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TensorDerivative",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Anticommutator", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Anticommutator", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Einstein", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Einstein", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Monomial", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Monomial", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TensorID", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TensorID", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AntihermitianQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AntihermitianQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["EinsteinToRicci", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"EinsteinToRicci", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MultiplyHead", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MultiplyHead", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TestIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TestIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Antisymmetrize", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Antisymmetrize", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["EmptyManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"EmptyManifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["NewIndexIn", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"NewIndexIn", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Tetra", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Tetra", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AnyDependencies", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AnyDependencies", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["epsilon", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"epsilon", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["NoScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"NoScalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TetraRule", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TetraRule", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AnyIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AnyIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["epsilonOrientation", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"epsilonOrientation", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["OrthogonalTo", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"OrthogonalTo", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TFRicci", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TFRicci", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AnyVBundles", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AnyVBundles", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["epsilonOrientationInBasis", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"epsilonOrientationInBasis", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["OrthogonalToVectorQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"OrthogonalToVectorQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TFRicciToRicci", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TFRicciToRicci", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AssociativeProductQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"AssociativeProductQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["EqualExpressionsQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"EqualExpressionsQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["OrthogonalWithMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"OrthogonalWithMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ToCanonical", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ToCanonical", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["At", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"At", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ERROR", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ERROR", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["OtherDependencies", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"OtherDependencies", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ToInducedDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ToInducedDerivative", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ATensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ATensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandCommutator", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExpandCommutator",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["OverDerivatives", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"OverDerivatives", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Torsion", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Torsion", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["AutomaticRules", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"AutomaticRules", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandGdelta", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExpandGdelta", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Pair", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Pair", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TorsionQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TorsionQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BaseOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BaseOfVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandProductMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ExpandProductMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PairAntisymmetrize", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"PairAntisymmetrize", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TorsionToChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"TorsionToChristoffel", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Basis", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Basis", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandPullBack", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExpandPullBack", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PairQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PairQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ToRule", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ToRule", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BasisQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BasisQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandPushForward", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ExpandPushForward", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PairSymmetrize", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PairSymmetrize", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ToStripped", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ToStripped", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BCIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BCIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExpandSdelta", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExpandSdelta", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ParamD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ParamD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ToTensorDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ToTensorDerivative", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Explode", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Explode", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ParameterQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ParameterQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TraceDummy", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TraceDummy", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExtendedFrom", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExtendedFrom", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ParametersOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ParametersOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TraceProductDummy", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"TraceProductDummy", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Blocked", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Blocked", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExtrinsicK", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ExtrinsicK", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PatternIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PatternIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["TransposeDagger", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"TransposeDagger", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BlockedQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BlockedQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ExtrinsicKToGradNormal", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ExtrinsicKToGradNormal", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PatternIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PatternIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Undef", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Undef", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Bracket", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Bracket", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FindAllOfType", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FindAllOfType", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefAbstractIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"UndefAbstractIndex", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BracketToCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BracketToCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FindBlockedIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"FindBlockedIndices", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PermuteIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PermuteIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefConstantSymbol", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"UndefConstantSymbol", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BreakChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BreakChristoffel",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FindDummyIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FindDummyIndices",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BreakInMonomials", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BreakInMonomials",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FindFreeIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FindFreeIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefInertHead", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefInertHead", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["BreakScalars", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"BreakScalars", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FindIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FindIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Precompose", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Precompose", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefManifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CartesianProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CartesianProduct",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FirstDerQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FirstDerQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PrimeDagger", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PrimeDagger", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefMapping", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefMapping", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CDIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CDIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FlatMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FlatMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PrintAs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PrintAs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChangeCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ChangeCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FlatMetricQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FlatMetricQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PrintAsCharacter", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PrintAsCharacter",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefParameter", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefParameter", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChangeCurvature", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ChangeCurvature", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ForceSymmetries", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ForceSymmetries", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProductByScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProductByScalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefProduct", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChangeFreeIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ChangeFreeIndices", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Free", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Free", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProductOfScalars", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProductOfScalars",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefScalarFunction", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"UndefScalarFunction", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChangeIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ChangeIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FRiemann", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FRiemann", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProductQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProductQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChangeTorsion", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ChangeTorsion", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FrobeniusQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FrobeniusQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Project", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Project", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UndefVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UndefVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Chart", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Chart", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FromMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FromMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProjectDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ProjectDerivative", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Up", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Up", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChartQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ChartQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FromProjected", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FromProjected", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Projected", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Projected", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UpIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UpIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CheckZeroDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CheckZeroDerivative", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FromStripped", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"FromStripped", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProjectedWith", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProjectedWith", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UpIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UpIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CheckZeroDerivativeStart", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CheckZeroDerivativeStart", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["FromTensorDerivative", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"FromTensorDerivative", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Projector", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Projector", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UpVectorQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UpVectorQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CheckZeroDerivativeStop", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CheckZeroDerivativeStop", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GaussCodazzi", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GaussCodazzi", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProjectorQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProjectorQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UseMetricOnVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"UseMetricOnVBundle", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Christoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Christoffel", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Gdelta", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Gdelta", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProjectorToMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ProjectorToMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UseSymmetries", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UseSymmetries", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChristoffelToGradConformal", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ChristoffelToGradConformal", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GetIndicesOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"GetIndicesOfVBundle", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProjectWith", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProjectWith", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["UxSort", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"UxSort", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChristoffelToGradMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ChristoffelToGradMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ProtectNewSymbol", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ProtectNewSymbol",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Validate", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Validate", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ChristoffelToMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ChristoffelToMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GiveOutputString", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GiveOutputString",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PullBack", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PullBack", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ValidateSymbolInSession", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ValidateSymbolInSession", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GiveSymbol", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GiveSymbol", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PullBackCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PullBackCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VanishingQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VanishingQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CIndexForm", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CIndexForm", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Grade", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Grade", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PullBackTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PullBackTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VarD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VarD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradedProductQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GradedProductQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PullBackVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PullBackVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ColorPositionsOfPattern", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ColorPositionsOfPattern", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradeOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GradeOfCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PushForward", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PushForward", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VBundleOfIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VBundleOfIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ColorTerms", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ColorTerms", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradeOfProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GradeOfProduct", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PushForwardTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"PushForwardTensor", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VBundleOfMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VBundleOfMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CommutativityOfProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CommutativityOfProduct", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradeOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"GradeOfTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["PutScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"PutScalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VBundleQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VBundleQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Commutator", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Commutator", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradMetricToChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"GradMetricToChristoffel", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RegisterIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RegisterIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VBundlesOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VBundlesOfCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CommuteCovDLieD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CommuteCovDLieD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["GradNormalToExtrinsicK", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"GradNormalToExtrinsicK", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RemoveIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RemoveIndices", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VectorOfInducedMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"VectorOfInducedMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CommuteCovDs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CommuteCovDs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["HeadOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"HeadOfTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ReplaceDummies", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ReplaceDummies", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["VisitorsOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"VisitorsOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CommutePDs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CommutePDs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["HermitianQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"HermitianQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ReplaceIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ReplaceIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["WeightedWithBasis", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"WeightedWithBasis", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConformalFactor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConformalFactor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["HostsOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"HostsOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Ricci", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Ricci", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["WeightOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"WeightOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConformalRules", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConformalRules", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IdentityElementOfProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"IdentityElementOfProduct", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RicciScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RicciScalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["WeightOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"WeightOfTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConformalTo", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConformalTo", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IdentityMapping", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IdentityMapping", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RicciToEinstein", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RicciToEinstein", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Weyl", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Weyl", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConstantMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConstantMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Imaginary", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Imaginary", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RicciToTFRicci", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RicciToTFRicci", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["WeylToRiemann", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"WeylToRiemann", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConstantQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConstantQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ImmersionQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ImmersionQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Riemann", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Riemann", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xSort", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xSort", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConstantSymbol", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConstantSymbol", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IModQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IModQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RiemannDown", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RiemannDown", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xSortOrder", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xSortOrder", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ConstantSymbolQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ConstantSymbolQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ImplicitTensorDepQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ImplicitTensorDepQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RiemannDownToRiemann", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"RiemannDownToRiemann", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xSortPrecedence", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xSortPrecedence", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractCurvature", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ContractCurvature", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Implode", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Implode", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RiemannToChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"RiemannToChristoffel", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xTensorFormStart", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xTensorFormStart",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractDir", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ContractDir", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ImposeSymmetry", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ImposeSymmetry", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RiemannToRiemannDown", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"RiemannToRiemannDown", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xTensorFormStop", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xTensorFormStop", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ContractMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexCoefficient", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexCoefficient",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["RiemannToWeyl", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"RiemannToWeyl", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["xTensorQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"xTensorQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractMetrics", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ContractMetrics", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexCollect", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexCollect", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SameDummies", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SameDummies", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Zero", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Zero", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractProjector", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ContractProjector", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexForm", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexForm", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Scalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Scalar", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$AbstractIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$AbstractIndices",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractThrough", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ContractThrough", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexList", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexList", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ScalarFunction", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ScalarFunction", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$AccelerationSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$AccelerationSign", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["ContractThroughQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ContractThroughQ",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexOrderedQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexOrderedQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ScalarFunctionQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ScalarFunctionQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Bases", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Bases", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexRange", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexRange", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ScalarQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ScalarQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Charts", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Charts", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CovDOfMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CovDOfMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexRule", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexRule", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ScalarsOfProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ScalarsOfProduct",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$CheckZeroDerivativeVerbose", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$CheckZeroDerivativeVerbose", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CovDQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CovDQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexRuleDelayed", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexRuleDelayed",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ScreenDollarIndices", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"ScreenDollarIndices", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$CIndexForm", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$CIndexForm", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CovDToChristoffel", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CovDToChristoffel", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexSet", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexSet", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Sdelta", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Sdelta", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$CommuteCovDsOnScalars", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$CommuteCovDsOnScalars", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Curvature", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Curvature", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexSetDelayed", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexSetDelayed", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SeparateDir", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SeparateDir", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ComputeNewDummies", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$ComputeNewDummies", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CurvatureQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"CurvatureQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexSolve", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexSolve", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SeparateMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SeparateMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ConstantSymbols", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ConstantSymbols",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["CurvatureRelations", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"CurvatureRelations", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndexSort", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndexSort", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ServantsOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ServantsOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$CovDFormat", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$CovDFormat", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Cyclize", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Cyclize", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndicesOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndicesOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetCharacters", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SetCharacters", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$CovDs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$CovDs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Dagger", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Dagger", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IndicesOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IndicesOfVBundle",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetConformalTo", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SetConformalTo", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$DefInfoQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$DefInfoQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DaggerIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DaggerIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InducedDecomposition", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"InducedDecomposition", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetIndexSortPriorities", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SetIndexSortPriorities", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$epsilonSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$epsilonSign", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DaggerQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DaggerQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InducedFrom", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"InducedFrom", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetOrthogonal", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SetOrthogonal", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ExtrinsicKSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ExtrinsicKSign", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefAbstractIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefAbstractIndex",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InertHead", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"InertHead", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetProjected", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SetProjected", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$FindIndicesAcceptedHeads", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$FindIndicesAcceptedHeads", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefConstantSymbol", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DefConstantSymbol", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InertHeadQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"InertHeadQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SetSplitTensors", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SetSplitTensors", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ImplodeInfoQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ImplodeInfoQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Inv", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Inv", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SignatureOfMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SignatureOfMetric", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$IndexListColor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$IndexListColor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefineCommutator", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefineCommutator",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InverseMapping", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"InverseMapping", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SignDetOfMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SignDetOfMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$InertHeads", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$InertHeads", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefInertHead", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefInertHead", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["InvertibleQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"InvertibleQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Simplification", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Simplification", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Manifolds", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Manifolds", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefInfo", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefInfo", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["IsIndexOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"IsIndexOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SlotsOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SlotsOfTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Mappings", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Mappings", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefManifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Keep", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Keep", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SortCovDs", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SortCovDs", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Metrics", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Metrics", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefMapping", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefMapping", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Kretschmann", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Kretschmann", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SortCovDsStart", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SortCovDsStart", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$MixedDers", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$MixedDers", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefMetric", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Labels", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Labels", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SortCovDsStop", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SortCovDsStop", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ParamDFormat", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ParamDFormat", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefParameter", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefParameter", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LastIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LastIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplitIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SplitIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Parameters", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Parameters", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefProduct", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefProduct", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LC", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LC", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplitManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SplitManifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ProductManifolds", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$ProductManifolds", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefProductMetric", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefProductMetric",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Leibnitz", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Leibnitz", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplitTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SplitTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ProductMetrics", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ProductMetrics", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefScalarFunction", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DefScalarFunction", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LI", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LI", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplittingsOfManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SplittingsOfManifold", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Products", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Products", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefTensor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LieD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LieD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplittingsOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SplittingsOfVBundle", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ProjectedFormat", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ProjectedFormat",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DefVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DefVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LieDToCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LieDToCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SplitVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SplitVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ProtectNewSymbols", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$ProtectNewSymbols", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["delta", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"delta", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["STFPart", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"STFPart", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ReadingVerbose", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ReadingVerbose", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DependenciesOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DependenciesOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Stripped", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Stripped", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$RicciSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$RicciSign", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DependenciesOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DependenciesOfCovD", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LinearPush", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LinearPush", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubdummiesIn", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SubdummiesIn", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$RiemannSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$RiemannSign", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DependenciesOfInertHead", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DependenciesOfInertHead", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["LinearQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"LinearQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubmanifoldQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SubmanifoldQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Rules", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Rules", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DependenciesOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DependenciesOfTensor", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MakeProjectors", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MakeProjectors", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubmanifoldsOfManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SubmanifoldsOfManifold", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ScalarColor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ScalarColor", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Determinant", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Determinant", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MakeRule", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MakeRule", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubmersionQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SubmersionQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$ScalarFunctions", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$ScalarFunctions",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DiffeomorphismQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DiffeomorphismQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Manifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Manifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubvbundleQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SubvbundleQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$SeparateScalarsFromScalar", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$SeparateScalarsFromScalar", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DimOfManifold", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DimOfManifold", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ManifoldBoundary", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ManifoldBoundary",
+                    "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SubvbundlesOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SubvbundlesOfVBundle", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$SumVBundles", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$SumVBundles", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DimOfVBundle", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DimOfVBundle", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ManifoldOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ManifoldOfCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Supercommutator", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Supercommutator", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$TensorBoxes", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$TensorBoxes", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DIndex", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DIndex", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ManifoldQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ManifoldQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Sym", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Sym", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Tensors", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Tensors", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DIndexQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DIndexQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["ManifoldsOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"ManifoldsOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SymbolOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SymbolOfCovD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$TorsionSign", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$TorsionSign", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Dir", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Dir", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Mapping", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Mapping", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Symmetrize", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Symmetrize", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$TraceDummyVerbose", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$TraceDummyVerbose", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DirCovDToLieD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"DirCovDToLieD", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MappingDomain", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MappingDomain", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Symmetry", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Symmetry", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$UndefInfoQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$UndefInfoQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["Disclaimer", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Disclaimer", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MappingImage", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MappingImage", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SymmetryGroupOfCovD", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SymmetryGroupOfCovD", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$VBundles", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$VBundles", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DisjointManifoldsQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DisjointManifoldsQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["MappingQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"MappingQ", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SymmetryGroupOfTensor", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"SymmetryGroupOfTensor", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$Version", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"$Version", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]},
+{
+ButtonBox[
+StyleBox["DisjointVBundlesQ", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"DisjointVBundlesQ", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["Master", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"Master", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["SymmetryOf", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", {"SymmetryOf", 
+                   "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic], 
+ButtonBox[
+StyleBox["$xPermVersionExpected", "InformationGridButton"],
+Appearance->None,
+BaseStyle->"InformationGridLink",
+ButtonData:>{"Info-943651d0-c8a3-4cbd-8289-bdae03ecb904", \
+{"$xPermVersionExpected", "xAct`xTensor`"}, False},
+ButtonNote->"xAct`xTensor`",
+Evaluator->Automatic]}
+},
+DefaultBaseStyle->"Text",
+GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+GridBoxItemSize->{"Columns" -> {{
+Scaled[0.2375]}}}],
+ImageMargins->{{10, 0}, {0, 2}}]}
+},
+GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}],
+FrameMargins->{{0, 0}, {8, 0}}]}, Dynamic[Typeset`open$$],
+ImageSize->Automatic]]}
+},
+GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+GridBoxDividers->{"ColumnsIndexed" -> {{False}}, "RowsIndexed" -> {}},
+GridBoxSpacings->{"Columns" -> {
+Offset[0.27999999999999997`], {
+Offset[0.5599999999999999]}, 
+Offset[0.27999999999999997`]}, "Rows" -> {
+Offset[0.2], {
+Offset[0.8]}, 
+Offset[0.2]}}]\),
+BaseStyle->"InformationTitleFrame"]\)
+
+ Symbol	
+AChristoffel[covd1, covd2][A, -b, -C] returns the Christoffel tensor relating the connections covd1 and covd2 on an inner vbundle, and defines it if it does not exist yet. This proceeds by immediate conversion of AChristoffel into Christoffel. AChristoffel[covd][A, -b, -C} is equivalent to AChristoffel[covd, PD][A, -b, -C].	
+ SubValue Definitions
+\[ThinSpace]AChristoffel[xAct`xTensor`Private`covd1_,xAct`xTensor`Private`covd2_:PD][xAct`xTensor`Private`i1_,xAct`xTensor`Private`i2_,xAct`xTensor`Private`i3_]:=Christoffel[xAct`xTensor`Private`covd1,xAct`xTensor`Private`covd2][xAct`xTensor`Private`i1,xAct`xTensor`Private`i2,xAct`xTensor`Private`i3]
+ 
+
+
+ DownValue Definitions
+\[ThinSpace]AChristoffel[]:=Message[AChristoffel::argt,AChristoffel,0,1,2]
+ 
+AChristoffel[_,_,xAct`xCore`Private`x$__]:=Message[AChristoffel::argt,AChristoffel,2+Length[{xAct`xCore`Private`x$}],1,2]
+ 
+
+
+
+	
+ Attributes	{Protected}
+ Full Name	xAct`xTensor`AChristoffel
+
+	
+	\[SpanFromLeft]
+
+
+
+Durante la evaluaci\363n de In[1]:=
+Information::notfound: Symbol Dagger not found.
+
+Durante la evaluaci\363n de In[1]:=
+Information::notfound: Symbol DaggerIndex not found.
+
+In[22]:= 
+(*Definimos las variedades, con las dimensiones y las letras de los indices \
+que vayamos a utilizar. M4 para llamarlo*)
+DefManifold[M4, 
+  4, {\[Lambda], \[Alpha], \[Beta], \[Gamma], \[Delta], \[Mu], \[Nu], \[Rho], \
+\[Sigma]}];
+
+Durante la evaluaci\363n de In[22]:= ** DefManifold: Defining manifold M4. 
+
+Durante la evaluaci\363n de In[22]:= ** DefVBundle: Defining vbundle TangentM4. 
+
+In[23]:= DimOfManifold[M4]
+TangentM4 // InputForm
+IndicesOfVBundle[TangentM4]
+
+Out[23]= 4
+
+Out[25]= {{\[Lambda], \[Alpha], \[Beta], \[Gamma], \[Delta], \[Mu], \[Nu], \[Rho], \
+\[Sigma]}, {}}
+
+TangentM4
+
+TangentM4
+
+
+In[26]:= (*Definimos la metrica con el comando siguiente, el -1 es el determinante, \
+CD= nombre de la derivada covariante, se pone un signo menos en la métrica \
+para que los índices sean covariantes*)
+DefMetric[-1, g[-\[Mu], -\[Nu]], CD]
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining symmetric metric tensor g[-\[Mu],-\[Nu]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining antisymmetric tensor epsilong[-\[Alpha],-\[Beta],-\[Gamma],-\[Delta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining tetrametric Tetrag[-\[Alpha],-\[Beta],-\[Gamma],-\[Delta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining tetrametric Tetrag\[Dagger][-\[Alpha],-\[Beta],-\[Gamma],-\[Delta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD: Defining covariant derivative CD[-\[Mu]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining vanishing torsion tensor TorsionCD[\[Alpha],-\[Beta],-\[Gamma]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining symmetric Christoffel tensor ChristoffelCD[\[Alpha],-\[Beta],-\[Gamma]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining Riemann tensor RiemannCD[-\[Alpha],-\[Beta],-\[Gamma],-\[Delta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining symmetric Ricci tensor RicciCD[-\[Alpha],-\[Beta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD:  Contractions of Riemann automatically replaced by Ricci.
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining Ricci scalar RicciScalarCD[]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD:  Contractions of Ricci automatically replaced by RicciScalar.
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining symmetric Einstein tensor EinsteinCD[-\[Alpha],-\[Beta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining Weyl tensor WeylCD[-\[Alpha],-\[Beta],-\[Gamma],-\[Delta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining symmetric TFRicci tensor TFRicciCD[-\[Alpha],-\[Beta]]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining Kretschmann scalar KretschmannCD[]. 
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD:  Computing RiemannToWeylRules for dim 4
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD:  Computing RicciToTFRicci for dim 4
+
+Durante la evaluaci\363n de In[26]:= ** DefCovD:  Computing RicciToEinsteinRules for dim 4
+
+Durante la evaluaci\363n de In[26]:= ** DefTensor: Defining weight +2 density Detg[]. Determinant.
+
+(*Para definir vectores y tensores utilizamos Deftensor,se puede poner los \
+índices que sean y si ponemos un - significa que el indice va abajo, si no se \
+pone nada el indice va arriba*)
+
+In[27]:= DefTensor[v[-\[Alpha]], M4]
+DefTensor[w[\[Alpha]], M4]
+
+
+Durante la evaluaci\363n de In[27]:= ** DefTensor: Defining tensor v[-\[Alpha]]. 
+
+Durante la evaluaci\363n de In[27]:= ** DefTensor: Defining tensor w[\[Alpha]]. 
+
+In[15]:= v[-\[Alpha]] w[\[Alpha]]
+
+In[29]:= v[-\[Alpha]]   w[\[Alpha]]
+(*Para crear una lista de tensores*)
+DefTensor[u[-\[Beta]], M4]
+DefTensor[t[\[Beta]], M4]
+{v[-\[Alpha]], w[\[Gamma]], u[-\[Delta]], t[\[Beta]]}
+
+
+
+Out[29]= v[-\[Alpha]]   w[\[Alpha]]
+
+Durante la evaluaci\363n de In[29]:= ** DefTensor: Defining tensor u[-\[Beta]]. 
+
+Durante la evaluaci\363n de In[29]:= ** DefTensor: Defining tensor t[\[Beta]]. 
+
+Out[32]= {v[-\[Alpha]] , w[\[Gamma]] , u[-\[Delta]] , t[\[Beta]]}
+
+In[126]:= {v[-\[Alpha]] , w[\[Gamma]] , u[-\[Delta]] , t[\[Beta]]}
+(*Para definir un tensor antisimetrico de dos índices (EM)*)
+DefTensor[F[-\[Alpha], -\[Beta]], M4, Antisymmetric[{-\[Alpha], -\[Beta]}]]
+
+(*Simetrico seria:*)
+DefTensor[S[-\[Alpha], -\[Beta]], M4, Symmetric[{-\[Alpha], -\[Beta]}]]
+
+Out[126]= {v[-\[Alpha]] , w[\[Gamma]] , u[-\[Delta]] , t[\[Beta]]}
+
+Durante la evaluaci\363n de In[126]:= ValidateSymbol::used: Symbol F is already used as a tensor.
+
+Durante la evaluaci\363n de In[126]:= ValidateSymbol::used: Symbol S is already used as a tensor.
+
+
+
+Durante la evaluaci\363n de In[31]:= ValidateSymbol::used: Symbol S is already used as a tensor.
+
+In[36]:= (*Para llamarlo de otra forma usar PrintAs y la flecha*)
+DefTensor[Stensor[\[Alpha], -\[Beta], -\[Gamma]], M4, 
+ Symmetric[{-\[Beta], -\[Gamma]}], PrintAs -> "\[Psi]"]
+
+Durante la evaluaci\363n de In[36]:= ** DefTensor: Defining tensor Stensor[\[Alpha],-\[Beta],-\[Gamma]]. 
+
+{F[-\[Alpha], -\[Beta]], S[-\[Alpha], -\[Beta]], 
+  Stensor[\[Alpha], -\[Beta], -\[Gamma]]};
+
+Out[48]= {F[-\[Alpha], -\[Beta]] , S[-\[Alpha], -\[Beta]] , Stensor[\[Alpha], \
+-\[Beta], -\[Gamma]]}
+
+(*Para eliminar definición de tensores usar undefTensor*)
+UndefTensor[Stensor];
+
+Durante la evaluaci\363n de In[49]:= ** UndefTensor: Undefined tensor Stensor
+
+In[121]:= (*Para definir constantes, urilizamos DefConstantSymbol*)
+DefConstantSymbol[hbar, PrintAs -> "\[HBar]"];
+hbar;
+(*Para definir funciones escalares en la variedad, usamos DefTensor*)
+DefTensor[scalar[], M4, PrintAs -> "\[Phi]"]
+
+(*Para contraer índices usamos la notación de Eintein*)
+
+v[\[Alpha]] v[-\[Alpha]]
+F[-\[Alpha], -\[Beta]] v[\[Alpha]]
+
+Durante la evaluaci\363n de In[121]:= ** DefConstantSymbol: Defining constant symbol hbar. 
+
+Durante la evaluaci\363n de In[121]:= ** DefTensor: Defining tensor scalar[]. 
+
+Out[124]= v[-\[Alpha]]   v[\[Alpha]]
+
+Out[125]= F[-\[Alpha], -\[Beta]]   v[\[Alpha]]
+
+In[64]:= scalar[]
+
+Out[64]= scalar[]
+
+(*Para simplicar las expresiones de las contracciones de los índices hay que \
+usar ToCanonical, da una expresión más simple y asi se puede ver las \
+simetrias de los tensores.*)
+F[-\[Alpha], -\[Beta]] v[\[Alpha]] v[\[Beta]] // ToCanonical
+(*Esta expresión sale 0 ya que contrae los dos indices de un tensor \
+antisimetrico, es un ejemplo para comprobar*)
+
+
+In[67]:= v[-\[Beta]] v[\[Alpha]] // ToCanonical
+
+In[70]:= v[\[Alpha]]   v[-\[Beta]]
+(*Para validar expresiones si estan bien escritas o no utilizamos Validate*)
+v[\[Mu]] v[-\[Mu]] // Validate
+
+v[\[Alpha]]   v[-\[Beta]]
+
+In[74]:= RiemannCD[-\[Alpha], -\[Beta], -\[Sigma], \[Gamma]] v[\[Alpha]] v[\[Beta]] u[\
+\[Sigma]] t[-\[Gamma]] // ToCanonical
+
+(*Asi comprobamos que el tensor es antisimetrico en los indices alpha y beta*)
+
+
+In[75]:= (*Una forma más generica que usando Simplification, simplifica y hace la \
+misma función que ToCanonical*)
+RiemannCD[-\[Alpha], -\[Beta], -\[Sigma], -\[Gamma]] F[\[Alpha], \[Sigma]] \
+RicciCD[\[Beta], \[Gamma]] // Simplification
+
+Out[75]= 0
+
+
+
+In[88]:= 
+(*Para las deltas utilizar la función delta en minuscula*)
+
+delta[-\[Mu], \[Nu]]
+(*Si contraemos indices nos da la dimension de la variedad*)
+delta[-\[Nu], \[Nu]]
+(*Aplicado a un tensor*)
+delta[-\[Mu], \[Nu]] v[\[Mu]]
+(*hay otra expresión que son las deltas expandidas a varios indices*)
+ExpandGdelta[Gdelta[-\[Mu], -\[Nu], \[Rho], \[Sigma]]]
+
+Out[88]= xAct`xTensor`delta[-\[Mu], \[Nu]]
+
+Out[89]= 4
+
+Out[90]= v[\[Nu]]
+
+Out[91]= - xAct`xTensor`delta[-\[Mu], \[Sigma]]  xAct`xTensor`delta[-\[Nu], \[Rho]] + 
+ xAct`xTensor`delta[-\[Mu], \[Rho]]   xAct`xTensor`delta[-\[Nu], \[Sigma]]
+
+(*Para el tensor Levi Civita tenemos que usar epsilong, g es el nombre de la \
+metrica*)
+epsilong[-\[Mu], -\[Nu], -\[Sigma], -\[Rho]];
+
+In[114]:= epsilong[-\[Mu], -\[Nu], -\[Sigma], -\[Rho]] g[\[Mu], \[Nu]]; // Simplification
+epsilong[-\[Mu], -\[Nu], -\[Sigma], -\[Rho]] epsilong[\[Alpha], \[Nu], \
+\[Sigma], \[Rho]]; (*Propiedades del tensor de Levi Civita*)
+
+(*Tambien podemos usar las contracciones de la métrica*)
+g[-\[Mu], -\[Sigma]] g[\[Nu], \[Sigma]];
+(*Para contraer en tensores hay que usar ContractMetric*)
+g[-\[Mu], -\[Nu]] F[\[Mu], \[Sigma]]; // ContractMetric
+
+RiemannCD[-\[Mu], -\[Nu], -\[Sigma], -\[Rho]] g[\[Nu], \[Rho]]; // \
+ContractMetric
+RicciCD[-\[Mu], -\[Nu]] g[\[Mu], \[Nu]]
+
+Out[119]= RicciScalarCD[]
+
+In[37]:= (*Para Las derivadas covariantes, tenemos varias opciones, planas y con \
+conexión*)
+(*Para derivadas planas utilizamos el comando PD*)
+(*En un escalar*)
+DefTensor[f[], M4]; DefTensor[\[Phi][], {}];
+DefConstantSymbol[GNewton, PrintAs -> "\!\(\*SubscriptBox[\(G\), \(N\)]\)"];
+
+PD[-\[Mu]][f[]];
+(*Para un tensor*)
+PD[-\[Mu]][v[\[Nu]]];
+
+PD[-\[Mu]][v[\[Nu]] f[]];
+(*Comprobamos que conmutan las derivadas planas*)
+PD[-\[Mu]] [PD[-\[Nu]][v[\[Sigma]]]] - 
+   PD[-\[Nu]] [PD[-\[Mu]][v[\[Sigma]]]]; // Simplification
+
+(*Para las derivadas covariantes utilizamos CD*)
+
+CD[-\[Mu]][v[\[Nu]] w[\[Sigma]]];
+(*Comprobamos que la derivada covariante de un escalar es la derivada plana*)
+
+CD[-\[Mu]][f[]]; // CovDToChristoffel
+
+(*Una cte la derivada es cero*)
+
+CD[-\[Mu]][GNewton];
+
+(*Para quitar los indices feos numericos usar ScreenDollarIndices*)
+CD[-\[Mu]][v[\[Nu]] ] // CovDToChristoffel // ScreenDollarIndices
+
+
+Durante la evaluaci\363n de In[37]:= ** DefTensor: Defining tensor f[]. 
+
+Durante la evaluaci\363n de In[37]:= ValidateSymbol::used: Symbol \[Phi] is already used as a tensor.
+
+Durante la evaluaci\363n de In[37]:= ValidateSymbol::used: Symbol GNewton is already used as a constant-symbol.
+
+Out[46]= ChristoffelCD[\[Nu], -\[Mu], -\[Alpha]]   
+  v[\[Alpha]] + xAct`xTensor`PD[-\[Mu]][
+v[\[Nu]]]
+
+(*Simbolos de Christoffel es con ChristoffelCD*)
+ChristoffelCD[-\[Alpha], -\[Beta], \[Gamma]];
+(*En forma de la metrica es*)
+ChristoffelCD[-\[Alpha], -\[Beta], \[Gamma]]; // 
+  ChristoffelToGradMetric // ScreenDollarIndices
+
+In[69]:= (*Para abreviar notacion para derivar, utilizamos @ para multiples derivadas \
+covariantes*)
+CD[-\[Mu]]@CD[-\[Nu]]@CD[-\[Rho]]@v[\[Sigma]];
+CD[-\[Mu]]@CD[-\[Nu]]@v[-\[Sigma]] - CD[-\[Nu]]@CD[-\[Mu]]@v[-\[Sigma]] // 
+   CovDToChristoffel // ToCanonical // ScreenDollarIndices 
+
+
+Durante la evaluaci\363n de In[69]:= ToCanonical::cmods: Detected metric-incompatible derivatives {PD}.
+
+Durante la evaluaci\363n de In[69]:= ToCanonical::cmods: Detected metric-incompatible derivatives {PD}.
+
+Durante la evaluaci\363n de In[69]:= ToCanonical::cmods: Detected metric-incompatible derivatives {PD}.
+
+Durante la evaluaci\363n de In[69]:= General::stop: Further output of ToCanonical::cmods will be suppressed during this calculation.
+
+Out[70]= - ChristoffelCD[-\[Beta], -\[Nu], -\[Alpha]]  
+  ChristoffelCD[\[Beta], -\[Mu], -\[Sigma]]   v[\[Alpha]] + 
+ ChristoffelCD[-\[Beta], -\[Mu], -\[Alpha]]   
+  ChristoffelCD[\[Beta], -\[Nu], -\[Sigma]]   v[\[Alpha]] - 
+ v[\[Alpha]]  xAct`xTensor`PD[-\[Mu]][
+ChristoffelCD[-\[Alpha], -\[Nu], -\[Sigma]]] + 
+ v[\[Alpha]]  xAct`xTensor`PD[-\[Nu]][
+ChristoffelCD[-\[Alpha], -\[Mu], -\[Sigma]]]
+
+
+
+
+
+(*Para las derivadas de Lie utilizamos LieD, hay que indicar si esta \
+derivando frente a un campo escalar,vectorial o tensorial*)
+LieD[v[\[Sigma]]][g[-\[Mu], -\[Nu]]]; // LieDToCovD  // 
+  ScreenDollarIndices // ToCanonical
+
+(*Para expresar la derivada de Lie en derivadas covariantes, usar LieDToCovD*)
+LieDToCovD [LieD[v[\[Sigma]]][g[-\[Mu], -\[Nu]]], CD]; // ScreenDollarIndices
+(*Tambien se puede utilizar los corchetes de Lie*)
+Bracket[v[-\[Mu]], w[-\[Nu]]][\[Sigma]]; // 
+  BracketToCovD // ScreenDollarIndices
+(*Con derivadas Covariantes*)
+BracketToCovD[Bracket[v[-\[Mu]], w[-\[Nu]]][\[Sigma]], 
+   CD]; // ScreenDollarIndices
+
+
+(*Para las identidades de Bianchi, hay que antisimetrizar los tres terminos \
+de abajo*)
+eq1 = 6  Antisymmetrize[
+    RiemannCD[-\[Mu], -\[Nu], -\[Rho], \[Sigma]], {-\[Mu], -\[Nu], -\[Rho]}];
+eq1 // RiemannToChristoffel // Simplification // ScreenDollarIndices
+(*Hemos comprobado que las identidades de Bianchi son 0*)
+
+Out[105]= 0
+
+
+
+
+
+(*Para renombrar contracciones, usamos InderSet y asi aligerar notación, hay \
+que poner una barrita baja en el tensor nuevo*)
+DefTensor[caca[-\[Mu]], M4, PrintAs -> "q"];
+IndexSet[caca[-\[Mu]_], F[-\[Nu], -\[Sigma]] v[\[Sigma]]];
+
+
+Durante la evaluaci\363n de In[156]:= ValidateSymbol::protected: Symbol Times is Protected.
+
+In[158]:= caca[-\[Beta]] // ScreenDollarIndices
+
+Out[158]= F[-\[Nu], -\[Alpha]]   v[\[Alpha]]
+
+
+
+
+
+
+Durante la evaluaci\363n de In[159]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[159]:= Package xAct`xCoba`  version 0.8.6, {2021,2,28}
+
+Durante la evaluaci\363n de In[159]:= CopyRight (C) 2005-2021, David Yllanes and Jose M. Martin-Garcia, under the General Public License.
+
+Durante la evaluaci\363n de In[159]:= ------------------------------------------------------------
+
+Durante la evaluaci\363n de In[159]:= These packages come with ABSOLUTELY NO WARRANTY; for details type Disclaimer[]. This is free software, and you are welcome to redistribute it under certain conditions. See the General Public License for details.
+
+Durante la evaluaci\363n de In[159]:= ------------------------------------------------------------
+
+
+
+Durante la evaluaci\363n de In[161]:= ValidateSymbol::used: Symbol \[Lambda] is already used as an abstract index.
+
+Durante la evaluaci\363n de In[161]:= IndicesOfVBundle::unknown: Unknown vector bundle Tangent[M].
+
+Durante la evaluaci\363n de In[161]:= Throw::nocatch: Uncaught Throw[Null] returned to top level.
+
+Out[162]= Hold[Throw[Null]]
+
+
+
